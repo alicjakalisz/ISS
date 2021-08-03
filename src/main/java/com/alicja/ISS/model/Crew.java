@@ -5,11 +5,7 @@ import javax.persistence.*;
 @Entity
 public class Crew {
     @Id
-    @SequenceGenerator(name = "crew_sequence",
-            sequenceName = "crew_sequence",
-            allocationSize = 1) //how much would the sequence increase from
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,
-            generator = "crew_sequence")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
 

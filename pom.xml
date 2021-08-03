@@ -16,6 +16,36 @@
 	<properties>
 		<java.version>11</java.version>
 	</properties>
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<activatedProperties>dev</activatedProperties>
+			</properties>
+			<dependencies>
+				<dependency>
+					<groupId>com.h2database</groupId>
+					<artifactId>h2</artifactId>
+				</dependency>
+			</dependencies>
+		</profile>
+
+		<profile>
+			<id>prod</id>
+			<properties>
+				<activatedProperties>prod</activatedProperties>
+			</properties>
+			<dependencies>
+				<dependency>
+					<groupId>mysql</groupId>
+					<artifactId>mysql-connector-java</artifactId>
+				</dependency>
+			</dependencies>
+		</profile>
+	</profiles>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -39,7 +69,7 @@
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-			<scope>runtime</scope>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.session</groupId>

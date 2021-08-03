@@ -12,11 +12,7 @@ import java.util.Optional;
 public class ISS {
 
     @Id
-    @SequenceGenerator(name = "iss_sequence",
-            sequenceName = "iss_sequence",
-            allocationSize = 1) //how much would the sequence increase from
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,
-            generator = "iss_sequence")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id",
             updatable = false/*noone can update this column*/
     )

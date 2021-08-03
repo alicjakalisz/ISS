@@ -83,7 +83,7 @@ public class ISSService {
             //if it is now, we will build ISS with a crew
     //
     private ISS buildISS(String timeStamp, boolean getCrew) throws IOException {
-        ISS iss = new ISS();
+        ISS iss;
         List<Crew> crewList = new ArrayList<>();
         if(getCrew){
             JsonObject pplInSpace = urlReader.convertURLStringIntoJsonObject(peopleInSpace);
@@ -93,8 +93,9 @@ public class ISSService {
                 if(member.getAsJsonObject().get("craft").getAsString().equals("ISS")){
                     Crew crew = new Crew();
                     crew.setName(member.getAsJsonObject().get("name").getAsString());
-                    crew.setIss(iss);
+                  //    crew.setIss(iss);
                     crewList.add(crew);
+                   //  crewList.add(crew);
                 }
             }
         }
@@ -112,7 +113,10 @@ public class ISSService {
         JsonObject JOForCoordinates = urlReader.convertURLStringIntoJsonObject(timeZonebyCoordinates + latitude + "," + longitude);
         String timeZone = JOForCoordinates.get("timezone_id").getAsString();
         String mapUrl = JOForCoordinates.get("map_url").getAsString();
-
-        return new ISS(latitude, longitude, velocity, timeStamp, timeZone, mapUrl, crewList);
+        ISS iss = new ISS(latitude, longitude, velocity, timeStamp, timeZone, mapUrl, new ArrayList<>());
+        for(Crew crew: crewList){
+            iss.addCrew(crew);
+        }
+        return iss;
     }
 }
