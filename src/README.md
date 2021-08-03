@@ -10,7 +10,7 @@ This project is a Spring API that represents classic REST API with unit tests. I
 Details of ISS at specific date and time are first checked if already stored in db and if so returned from there. In other case the information is taken from two widely avaiable APIS:
 People in Space **http://open-notify.org/Open-Notify-API/People-In-Space/** and Where The Iss At **https://wheretheiss.at/w/developer** and saved in db before returning to the client.
 
-A client is able to get all recipes available in database, find a recipe by its id, update and delete a recipe.
+
 
 ## Public Endpoint Example
 This Rest API has been deployed in AWS in an EC2 instance and using a MySQL RDS database.
@@ -33,7 +33,7 @@ Project is created with:
 
 ## API contract
 
-Get ISS without date time parameter:
+Get ISS without date time parameter (returns current data at current time):
 ###  HTTP GET /ISS
 #### EXAMPLE OF HTTP 200 response:
 ```
@@ -94,7 +94,7 @@ To run this project locally:
  
   `http://localhost:8084/ISS`
 ## Deployment to Production
-* Connect to remote db from your computer and create there a database "recipes".
+* Connect to remote db from your computer and create there a database "ISS".
 * Modify application.properties.prod with the correct database connection of AWS RDS .
 * Generate the jar for production:
 
